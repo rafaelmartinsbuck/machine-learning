@@ -45,7 +45,7 @@ email e rótulos POI (pessoa de interesse).
 
 - **rótulo POI**: [‘poi’] (atributo objetivo lógico (booleano), representado como um inteiro)
 
-#### Validação
+### Modelo final e Validação
 
 O melhor estimador para o AdaBoost (melhor classificador para o problema) foi:
 
