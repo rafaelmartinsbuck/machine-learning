@@ -75,7 +75,7 @@ my_new_dataset, new_features_list = data_explorer(my_dataset, features_list)
 # labels, features = targetFeatureSplit(data)
 # features_train, features_test, labels_train, labels_test = \
 #    train_test_split(features, labels, train_size=.45, stratify=labels)
-#    
+    
 # skbest = SelectKBest(k=10)  # try best value to fit
 # sk_transform = skbest.fit_transform(features_train, labels_train)
 # indices = skbest.get_support(True)
@@ -84,10 +84,14 @@ my_new_dataset, new_features_list = data_explorer(my_dataset, features_list)
 #    print('features: ',(new_features_list[index + 1],' score: ',skbest.scores_[index]))
     
 # Selecting top 10 features after some samples of SelectKBest
+
 final_features_list = ['poi', 'salary', 'bonus', 'loan_advances', 'total_stock_value', 
                        'expenses', 'exercised_stock_options', 'total_payments', 
                        'from_poi_to_this_person', 'total_payments_salary_ratio',
                        'bonus_salary_ratio']
+
+final_features_list = ['poi', 'salary', 'bonus', 'loan_advances', 'total_stock_value', 
+                       'expenses', 'exercised_stock_options']
 
 # Extract features and labels from dataset for local testing
 data = featureFormat(my_new_dataset, final_features_list, sort_keys=True)
@@ -151,11 +155,11 @@ print('Best parameters: ', cross_val.best_params_)
 clf = cross_val.best_estimator_
 #print(clf)
 '''
-'''
+
 # Using stratified shuffle split cross validation because of the small size of the dataset
 sss = StratifiedShuffleSplit(labels, 500, test_size=0.45, random_state=42)
 # Build pipeline
-kbest = SelectKBest(k=10)
+kbest = SelectKBest(k=6)
 scaler = MinMaxScaler()
 classifier = AdaBoostClassifier()
 pipeline = Pipeline(steps=[('minmax_scaler', scaler), 
@@ -178,11 +182,11 @@ cross_val.fit(features, labels)
 print('Best parameters: ', cross_val.best_params_)
 clf = cross_val.best_estimator_
 #print(clf)
-'''
+
 
 clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth=10, criterion='gini'), 
-                         n_estimators=50, 
-                         learning_rate=.8)
+                         n_estimators=75, 
+                         learning_rate=.7)
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
 ### check your results. You do not need to change anything below, but make sure
