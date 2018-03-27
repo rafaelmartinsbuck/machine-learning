@@ -2,7 +2,7 @@
 
 ## Criando um Sistema de Intervenção para Estudantes
 ### Instalação
-Este projeto requer **Python 2.7** e as seguintes bibliotecas Python instaladas:
+Este projeto requer **Python 3.5** e as seguintes bibliotecas Python instaladas:
 
 - [NumPy](http://www.numpy.org/)
 - [Pandas](http://pandas.pydata.org/)
